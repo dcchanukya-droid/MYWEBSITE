@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal academic portfolio of Chanukya, a Computer Science and Engineering student at IIIT Raichur.">
+  <meta name="theme-color" content="#f5f3ff">
+  <title>Chanukya | Personal Portfolio</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="shortcut icon" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <style>
+    /* CS101 portfolio: CSS is included in this file, so no extra stylesheet is required. */
+    :root{--ink:#211d35;--muted:#68647b;--purple:#7651d5;--pink:#e879b8;--mint:#dff8ed;--paper:#fff;--line:#e9e4f3;--shadow:0 16px 45px rgba(55,37,100,.09);--rainbow:linear-gradient(100deg,#ef476f 0%,#ff8c42 17%,#ffd166 33%,#06d6a0 50%,#118ab2 67%,#4361ee 83%,#9b5de5 100%)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f8f7fc;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.7}
+    a{color:#6842c4}a:hover{color:#d14f9d}.wrap{width:min(1080px,calc(100% - 36px));margin:auto}.topline{height:8px;background:var(--rainbow)}
+    header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:900;letter-spacing:.08em;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px}.brand-icon{width:44px;height:44px;object-fit:contain;display:block;flex:0 0 44px;filter:drop-shadow(0 3px 7px rgba(60,35,90,.12))}.navlinks{display:flex;flex-wrap:wrap;gap:19px}.navlinks a{text-decoration:none;color:#5e5871;font-size:.9rem;font-weight:bold}
+    .hero{display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:40px;padding:76px 0 65px;min-height:510px}.pill{display:inline-block;background:linear-gradient(100deg,#fff0f3,#fff7e6,#edfff8,#eef5ff,#f7efff);color:#6945c1;border-radius:30px;padding:6px 13px;font-size:.82rem;font-weight:bold}.hero h1{font-size:clamp(3rem,7vw,5.8rem);line-height:1.02;letter-spacing:-.07em;margin:18px 0}.gradient{background:var(--rainbow);background-size:200% 100%;background-clip:text;-webkit-background-clip:text;color:transparent}.hero h2{font-size:1.2rem;color:#51496b;margin:0 0 12px}.intro{max-width:650px;color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}.btn{display:inline-block;text-decoration:none;padding:11px 17px;border-radius:11px;font-weight:bold;border:1px solid #ded5f1}.btn.primary{background:var(--rainbow);color:#fff;border:0}.btn.light{background:#fff;color:#5d478d}.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .portrait-card{background:var(--rainbow);padding:8px;border-radius:28px;max-width:290px;margin:auto;transform:rotate(2deg);box-shadow:0 22px 55px #8e71bd40}.portrait-inner{background:#fff;border-radius:22px;padding:20px;text-align:center}.portrait{width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;display:block;border-radius:17px;background:#f0ebff}.portrait-inner h3{margin:13px 0 0}.portrait-inner p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+    section{padding:54px 0;scroll-margin-top:85px}.kicker{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#7651d5;font-weight:900;text-decoration:underline;text-decoration-color:#06d6a0;text-decoration-thickness:3px;text-underline-offset:5px}.section-title{font-size:clamp(2rem,4vw,2.7rem);letter-spacing:-.05em;margin:5px 0 10px}.section-lead{color:var(--muted);max-width:720px;margin:0 0 25px}.card{background:var(--paper);border:1px solid var(--line);border-radius:19px;padding:25px;box-shadow:var(--shadow)}.about p{margin:0 0 13px;color:#5e596f}.about p:last-child{margin-bottom:0}.highlight{font-weight:bold;color:#6842c4}.quote{border-left:4px solid #b48be9;padding-left:15px;font-style:italic;font-weight:bold;color:#554276!important;margin-top:18px!important}
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.education h3,.skill h3,.project h3{margin:5px 0}.small-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#9068cc;font-weight:900}.education p,.skill p,.project p{margin:4px 0;color:var(--muted)}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line)}th{background:linear-gradient(100deg,#ffe9ef,#fff4d9,#e5fff5,#e8f1ff,#f3eaff);color:#4f3a85}tr:last-child td{border-bottom:0}caption{text-align:left;padding:0 0 12px;color:var(--muted);font-size:.9rem}
+    .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.skill{padding:20px}.skill-icon{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#7651d5}.skill ul{padding-left:20px;margin-bottom:0;color:var(--muted)}.project{display:flex;align-items:center;justify-content:space-between;gap:20px}.project-mark{width:66px;height:66px;flex:0 0 66px;border-radius:18px;background:var(--rainbow);display:grid;place-items:center;color:#fff;font-size:1.7rem}
+    .interest-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.interest-columns ul,.interest-columns ol{padding-left:23px;color:var(--muted)}.interest-columns li{padding:3px 0}.map-frame{width:100%;height:310px;border:0;border-radius:16px;background:#eee9ff}.contact{text-align:center;background:linear-gradient(120deg,#fff1f3,#fff9e9,#effff8,#eff5ff,#f7f0ff)}.contact p{color:var(--muted);max-width:620px;margin:8px auto 20px}.contact-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}.contact-actions a{border-radius:11px;padding:10px 15px;background:#fff;text-decoration:none;border:1px solid var(--line);font-weight:bold}footer{text-align:center;padding:25px;color:#827d91;font-size:.85rem}
+    @media(max-width:760px){.hero{grid-template-columns:1fr;text-align:center;padding-top:55px;gap:30px}.intro{margin:auto}.actions{justify-content:center}.portrait-card{max-width:255px}.nav{align-items:flex-start;padding:15px 0;flex-direction:column}.navlinks{gap:10px 16px}.grid2,.interest-columns{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}.project{align-items:flex-start}}
+    @media(max-width:440px){.skills{grid-template-columns:1fr}.card{padding:19px}th,td{padding:10px 8px;font-size:.88rem}}
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Chanukya home">
+        <img class="brand-icon" src="logo.png" alt="" width="44" height="44">
+        CHANUKYA.</a>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#interests">Interests</a><a href="#campus">Campus</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <section class="hero" id="home">
+        <div>
+          <span class="pill">Computer Science & Engineering · IIIT Raichur</span>
+          <h1><span class="gradient">Hello!</span><br>I'm Chanukya.</h1>
+          <h2>Curious mind. Future builder. Always learning.</h2>
+          <p class="intro">I am a Computer Science and Engineering student interested in technology, programming, creativity, and discovering how things work. I enjoy learning new concepts and turning ideas into useful projects.</p>
+          <div class="actions"><a class="btn primary" href="#projects">Explore my work ↗</a><a class="btn light" href="#contact">Contact me</a></div>
+        </div>
+        <div class="portrait-card">
+          <div class="portrait-inner">
+            <img class="portrait" src="logo.png" alt="Chanukya profile logo" width="300" height="300">
+            <h3>Chanukya</h3><p>Learn · Build · Improve</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <span class="kicker">A little introduction</span><h2 class="section-title">About me</h2>
+        <div class="card about">
+          <p>Hello! I am <strong>Chanukya</strong>, a Bachelor of Technology student in <strong>Computer Science and Engineering</strong> at the <strong>Indian Institute of Information Technology, Raichur</strong>.</p>
+          <p>I am interested in technology, programming, creativity, and exploring how digital products are designed and developed. I am currently building my foundation in computer science and improving my logical thinking and problem-solving skills.</p>
+          <p>Outside academics, I enjoy exploring new ideas, learning about emerging technologies, and working on personal projects. My aim is to become a capable software developer and create useful solutions.</p>
+          <p class="quote">“Every expert was once a beginner who kept learning.”</p>
+        </div>
+      </section>
+
+      <section id="education">
+        <span class="kicker">My learning journey</span><h2 class="section-title">Education</h2>
+        <div class="grid2">
+          <article class="card education"><span class="small-label">Current education</span><h3>Indian Institute of Information Technology, Raichur</h3><p>B.Tech · Computer Science and Engineering</p><p><strong>2026 – Present</strong></p></article>
+          <article class="card education"><span class="small-label">Intermediate</span><h3>Narayana Junior College</h3><p>Completed intermediate education.</p></article>
+          <article class="card education"><span class="small-label">School</span><h3>Nalanda Vidya Niketan</h3><p>Completed school education.</p></article>
+        </div>
+        <div style="margin-top:22px;overflow-x:auto">
+          <table>
+            <caption><strong>Academic details</strong> — education summary</caption>
+            <thead><tr><th scope="col">Level</th><th scope="col">Institution</th><th scope="col">Course / Status</th></tr></thead>
+            <tbody>
+              <tr><td>Undergraduate</td><td>IIIT Raichur</td><td>B.Tech, CSE · Present</td></tr>
+              <tr><td>Intermediate</td><td>Narayana Junior College</td><td>Completed</td></tr>
+              <tr><td>School</td><td>Nalanda Vidya Niketan</td><td>Completed</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="skills">
+        <span class="kicker">What I am learning</span><h2 class="section-title">Skills & learning areas</h2>
+        <p class="section-lead">These are areas I am exploring and developing as part of my computer science journey.</p>
+        <div class="skills">
+          <article class="card skill"><div class="skill-icon">01 / CODE</div><h3>Programming</h3><p>Learning programming fundamentals and problem solving.</p><ul><li>Programming logic</li><li>Basic coding</li></ul></article>
+          <article class="card skill"><div class="skill-icon">02 / WEB</div><h3>Web development</h3><p>Understanding how websites are structured and styled.</p><ul><li>HTML</li><li>CSS</li></ul></article>
+          <article class="card skill"><div class="skill-icon">03 / TECHNOLOGY</div><h3>Technology</h3><p>Exploring new areas in computer science.</p><ul><li>Artificial Intelligence</li><li>Data Science</li></ul></article>
+        </div>
+      </section>
+
+      <section id="projects">
+        <span class="kicker">Ideas into practice</span><h2 class="section-title">Projects</h2>
+        <p class="section-lead">A space to present projects I build while learning. I will keep adding new work here.</p>
+        <article class="card project"><div><span class="small-label">Academic assignment</span><h3>Personal Web Portfolio</h3><p>A personal website created using HTML and CSS to present my background, education, interests, and learning journey. This project practices semantic HTML, links, tables, lists, images, and responsive styling.</p></div><div class="project-mark" aria-hidden="true">&lt;/&gt;</div></article>
+      </section>
+
+      <section id="interests">
+        <span class="kicker">Beyond the classroom</span><h2 class="section-title">Interests & goals</h2>
+        <div class="interest-columns">
+          <div class="card"><h3>My interests</h3><ul><li>Exploring technology and computers</li><li>Learning programming and web design</li><li>Discovering Artificial Intelligence</li><li>Creative problem solving</li></ul></div>
+          <div class="card"><h3>My current goals</h3><ol><li>Strengthen computer science fundamentals</li><li>Practice coding regularly</li><li>Build useful projects</li><li>Collaborate and learn from others</li></ol></div>
+        </div>
+      </section>
+
+      <section id="campus">
+        <span class="kicker">Find my institute</span><h2 class="section-title">IIIT Raichur</h2>
+        <p class="section-lead">The map below is embedded as an iframe, demonstrating another HTML element required for this assignment.</p>
+        <div class="card" style="padding:10px"><iframe class="map-frame" title="Map showing IIIT Raichur" src="https://www.openstreetmap.org/export/embed.html?bbox=76.65%2C16.15%2C77.05%2C16.45&amp;layer=mapnik" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><p style="margin:8px 6px 2px;font-size:.88rem"><a href="https://www.openstreetmap.org/search?query=IIIT%20Raichur" target="_blank" rel="noopener noreferrer">Open map in a new tab</a></p></div>
+      </section>
+
+      <section id="contact">
+        <div class="card contact"><span class="kicker">Let's connect</span><h2 class="section-title">Contact me</h2><p>Thank you for visiting my portfolio. You can explore the links below to learn more about computer science and web development.</p>
+          <div class="contact-actions"><a href="https://www.iiitr.ac.in/" target="_blank" rel="noopener noreferrer">IIIT Raichur ↗</a><a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">Learn HTML & CSS ↗</a><a href="#home">Back to top ↑</a></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap">© 2026 Chanukya · Personal academic portfolio · Made with HTML & CSS</div></footer>
+</body>
+</html>
