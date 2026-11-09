@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff8fb" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <meta name="description" content="Chanukya's personal portfolio — Computer Science and Engineering student at IIIT Raichur." />
+  <title>Chanukya | Personal Portfolio</title>
+  <style>
+    :root {
+      --ink: #242238;
+      --muted: #686579;
+      --paper: rgba(255, 255, 255, 0.78);
+      --line: rgba(76, 62, 112, 0.11);
+      --shadow: 0 18px 55px rgba(62, 41, 105, 0.10);
+      --rainbow: linear-gradient(100deg, #ff5b79 0%, #ff9b45 20%, #f4d34f 38%, #50c98b 56%, #4ba9f5 74%, #9c75ef 90%, #e879c8 100%);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255, 112, 155, .15), transparent 27rem),
+        radial-gradient(circle at 92% 15%, rgba(111, 160, 255, .17), transparent 27rem),
+        radial-gradient(circle at 80% 85%, rgba(180, 122, 255, .13), transparent 25rem),
+        #fffafd;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+    .rainbow-rule { height: 7px; background: var(--rainbow); }
+    .site-shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(255, 250, 253, .82);
+      border-bottom: 1px solid rgba(76, 62, 112, .08);
+    }
+    .nav-wrap { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 850; letter-spacing: -.04em; }
+    .brand-mark {
+      width: 37px; height: 37px; border-radius: 12px; background: var(--rainbow);
+      display: grid; place-items: center; color: white; font-size: .85rem; font-weight: 900;
+      box-shadow: 0 7px 18px rgba(174, 105, 202, .23);
+    }
+    nav { display: flex; align-items: center; gap: clamp(12px, 2.5vw, 28px); }
+    nav a { font-size: .9rem; text-decoration: none; color: var(--muted); font-weight: 650; transition: color .2s ease; }
+    nav a:hover { color: #8a5ce0; }
+    .menu-toggle { display: none; border: 0; background: white; border-radius: 10px; padding: 9px 12px; color: var(--ink); font-size: 1.2rem; cursor: pointer; }
+    .menu-checkbox { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    .menu-checkbox:focus-visible + .menu-toggle { outline: 3px solid #9b65c8; outline-offset: 3px; }
+
+    .hero { min-height: 660px; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 55px; padding: 85px 0 90px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 7px 13px; border-radius: 999px; background: white; border: 1px solid var(--line); color: #6e5d8e; font-size: .82rem; font-weight: 750; box-shadow: 0 7px 24px rgba(62,41,105,.06); }
+    .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: #51c98d; box-shadow: 0 0 0 4px rgba(81,201,141,.13); }
+    h1 { margin: 22px 0 14px; font-size: clamp(3.7rem, 8vw, 6.6rem); line-height: .98; letter-spacing: -.075em; font-weight: 900; }
+    .hi { display: block; width: fit-content; background: var(--rainbow); color: transparent; -webkit-background-clip: text; background-clip: text; background-size: 200% auto; animation: rainbow-flow 7s linear infinite; }
+    .hero-name { display: block; color: var(--ink); }
+    @keyframes rainbow-flow { to { background-position: 200% center; } }
+    .hero-subtitle { font-size: clamp(1.05rem, 2vw, 1.28rem); font-weight: 700; color: #514a69; margin: 0 0 15px; }
+    .hero-copy { max-width: 620px; color: var(--muted); font-size: 1.03rem; margin: 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 29px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 19px; border-radius: 13px; text-decoration: none; font-weight: 750; font-size: .93rem; transition: transform .2s, box-shadow .2s; }
+    .button:hover { transform: translateY(-3px); }
+    .button-primary { color: white; background: linear-gradient(110deg, #8c63df, #e16bb2); box-shadow: 0 10px 25px rgba(157, 99, 207, .25); }
+    .button-secondary { background: white; border: 1px solid var(--line); color: #514a69; }
+
+    .hero-art { position: relative; display: grid; place-items: center; min-height: 390px; }
+    .orbit { position: absolute; width: min(350px, 78vw); aspect-ratio: 1; border: 1px dashed rgba(139, 104, 203, .32); border-radius: 50%; animation: spin 32s linear infinite; }
+    .orbit::before, .orbit::after { content: ""; position: absolute; width: 17px; height: 17px; border-radius: 50%; background: #ff9a70; box-shadow: 0 0 0 7px rgba(255,154,112,.13); }
+    .orbit::before { top: 22px; left: 65px; }
+    .orbit::after { bottom: 35px; right: 34px; background: #79a7f5; box-shadow: 0 0 0 7px rgba(121,167,245,.14); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .profile-card { position: relative; width: min(275px, 68vw); aspect-ratio: .87; border-radius: 34px; padding: 9px; background: var(--rainbow); transform: rotate(4deg); box-shadow: 0 28px 70px rgba(102, 76, 160, .22); }
+    .profile-inner { height: 100%; border-radius: 27px; background: linear-gradient(145deg, #fff 0%, #fbf5ff 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 25px; transform: rotate(-4deg); }
+    .avatar { width: 124px; height: 124px; border-radius: 38px; display: grid; place-items: center; overflow: hidden; color: white; font-size: 2.8rem; letter-spacing: -.08em; font-weight: 900; background: var(--rainbow); box-shadow: 0 14px 32px rgba(151, 103, 194, .22); }
+    .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: inherit; }
+    .profile-inner strong { margin-top: 20px; font-size: 1.35rem; letter-spacing: -.04em; }
+    .profile-inner span { margin-top: 3px; color: var(--muted); font-size: .88rem; }
+    .floating-chip { position: absolute; padding: 10px 14px; border-radius: 13px; background: white; box-shadow: var(--shadow); border: 1px solid var(--line); font-size: .82rem; font-weight: 800; color: #665486; }
+    .chip-one { top: 45px; right: -5px; transform: rotate(6deg); }
+    .chip-two { bottom: 48px; left: -8px; transform: rotate(-6deg); }
+
+    section { padding: 76px 0; }
+    .section-heading { margin-bottom: 30px; }
+    .section-kicker { color: #9b65c8; text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; font-weight: 850; }
+    h2 { margin: 6px 0 0; font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -.06em; line-height: 1.15; }
+    .section-intro { max-width: 660px; color: var(--muted); margin: 12px 0 0; }
+    .card { background: var(--paper); border: 1px solid rgba(255,255,255,.9); border-radius: 22px; box-shadow: var(--shadow); backdrop-filter: blur(12px); }
+    .about-card { padding: 30px; position: relative; overflow: hidden; }
+    .about-card::after { content: ""; position: absolute; right: -50px; bottom: -80px; width: 210px; height: 210px; border-radius: 50%; background: var(--rainbow); opacity: .10; filter: blur(4px); }
+    .about-card p { max-width: 900px; color: #5f5b70; margin: 0 0 14px; position: relative; z-index: 1; }
+    .about-card p:last-child { margin-bottom: 0; }
+    .quote-line { margin-top: 22px !important; padding-left: 17px; border-left: 4px solid transparent; border-image: var(--rainbow) 1; color: #51436f !important; font-weight: 800; }
+
+    .education-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .education-card { padding: 25px; }
+    .education-card .label { color: #9b65c8; font-size: .75rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 850; }
+    .education-card h3 { margin: 8px 0 5px; font-size: 1.15rem; letter-spacing: -.025em; }
+    .education-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .education-card .year { display: inline-block; margin-top: 14px; color: #6d5792; font-weight: 800; font-size: .86rem; }
+    .education-card.featured { border-top: 4px solid transparent; border-image: var(--rainbow) 1; }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .skill-card { padding: 22px 19px; min-height: 160px; }
+    .skill-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: linear-gradient(135deg, rgba(255,119,153,.17), rgba(144,112,238,.16)); font-size: 1.25rem; }
+    .skill-card h3 { margin: 14px 0 5px; font-size: 1rem; }
+    .skill-card p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .level { display: inline-block; margin-top: 10px; color: #9a68c7; font-size: .75rem; font-weight: 850; }
+
+    .project-card { padding: 29px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; }
+    .project-tag { display: inline-block; padding: 5px 10px; border-radius: 999px; background: #f2eaff; color: #8259bd; font-size: .75rem; font-weight: 850; }
+    .project-card h3 { margin: 13px 0 7px; font-size: 1.25rem; }
+    .project-card p { margin: 0; color: var(--muted); max-width: 720px; }
+    .project-symbol { width: 80px; height: 80px; border-radius: 23px; display: grid; place-items: center; color: white; font-size: 2rem; background: var(--rainbow); box-shadow: 0 12px 28px rgba(156, 107, 198, .20); }
+    .future-title { margin: 30px 0 13px; font-size: 1rem; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.75); color: #665f79; font-weight: 650; font-size: .84rem; }
+
+    .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .list-card { padding: 26px; }
+    .list-card h3 { margin: 0 0 15px; font-size: 1.1rem; }
+    .simple-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+    .simple-list li { display: flex; align-items: flex-start; gap: 11px; color: #5f5b70; }
+    .list-dot { flex: 0 0 10px; width: 10px; height: 10px; margin-top: 8px; border-radius: 50%; background: var(--rainbow); }
+
+    .contact-panel { padding: clamp(26px, 5vw, 45px); text-align: center; background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(250,243,255,.92)); }
+    .contact-panel h2 { margin-bottom: 10px; }
+    .contact-panel p { color: var(--muted); margin: 0 auto 23px; max-width: 570px; }
+    .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 11px; }
+    .contact-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 14px; border-radius: 12px; background: white; border: 1px solid var(--line); color: #615177; font-weight: 750; font-size: .9rem; }
+    .contact-link:hover { border-color: rgba(157, 105, 210, .45); }
+    footer { padding: 25px 0 35px; text-align: center; color: #8a8498; font-size: .85rem; }
+    footer .mini-rainbow { display: block; width: 70px; height: 4px; border-radius: 99px; margin: 0 auto 13px; background: var(--rainbow); }
+
+    /* Sections remain visible without JavaScript. */
+    .reveal { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; gap: 15px; padding-top: 70px; text-align: center; }
+      .hero-copy, .hi { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-art { min-height: 370px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .site-shell { width: min(100% - 30px, 1120px); }
+      .nav-wrap { min-height: 64px; }
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 15px; right: 15px; padding: 16px; flex-direction: column; align-items: stretch; gap: 0; background: rgba(255,255,255,.97); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); }
+      .menu-checkbox:checked ~ nav { display: flex; }
+      .menu-checkbox:checked + .menu-toggle { background: #f2eaff; }
+      nav a { padding: 10px 8px; }
+      .hero { min-height: auto; padding: 65px 0 50px; }
+      h1 { font-size: clamp(3.35rem, 16vw, 5rem); }
+      section { padding: 55px 0; }
+      .education-grid, .two-column { grid-template-columns: 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-symbol { width: 62px; height: 62px; border-radius: 18px; }
+      .about-card, .education-card, .list-card { padding: 22px; }
+      .skills-grid { gap: 11px; }
+      .skill-card { padding: 17px 14px; min-height: 150px; }
+      .chip-one { right: -1px; }
+      .chip-two { left: -1px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="rainbow-rule"></div>
+  <header>
+    <div class="site-shell nav-wrap">
+      <a class="brand" href="#home" aria-label="Chanukya home">
+        <span class="brand-mark">C</span>
+        <span>CHANUKYA<span style="color:#a16bd0">.</span></span>
+      </a>
+      <input class="menu-checkbox" type="checkbox" id="menu-toggle" aria-label="Toggle navigation" />
+      <label class="menu-toggle" for="menu-toggle" aria-hidden="true">☰</label>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#interests">Interests</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="site-shell">
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> First-year CSE student · IIIT Raichur</span>
+          <h1><span class="hi">HI-LLO!</span><span class="hero-name">I'm Chanukya.</span></h1>
+          <p class="hero-subtitle">Curious mind. Future builder. Always learning.</p>
+          <p class="hero-copy">I'm a Computer Science and Engineering student who enjoys technology, programming, creativity, and discovering how things work in the digital world. I'm building my skills one idea and one project at a time.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Decorative portfolio illustration">
+          <div class="orbit"></div>
+          <div class="profile-card">
+            <div class="profile-inner">
+              <div class="avatar"><img src="profile.jpg" alt="Chanukya profile photo" /></div>
+              <strong>Chanukya</strong>
+              <span>Learn · Build · Improve</span>
+            </div>
+          </div>
+          <div class="floating-chip chip-one">✦ Creative thinker</div>
+          <div class="floating-chip chip-two">⌘ CSE · 2026</div>
+        </div>
+      </section>
+
+      <section id="about" class="reveal">
+        <div class="section-heading">
+          <span class="section-kicker">A little introduction</span>
+          <h2>About me</h2>
+        </div>
+        <div class="card about-card">
+          <p>Hello! I'm Chanukya, a first-year Bachelor of Technology student in Computer Science and Engineering at the Indian Institute of Information Technology, Raichur.</p>
+          <p>I'm passionate about technology, programming, creativity, and exploring how things work in the digital world. Currently, I'm building my foundation in computer science, learning programming concepts, exploring Artificial Intelligence and Data Science, and developing my problem-solving abilities.</p>
+          <p>I believe college life is not just about academics. It's also about discovering new interests, collaborating with people, taking on challenges, and continuously improving myself.</p>
+          <p>My goal is to become a skilled software developer, work on meaningful projects, and transform innovative ideas into practical solutions.</p>
+          <p class="quote-line">I'm not just learning technology; I'm learning how to create with it.</p>
+        </div>
+      </section>
+
+      <section id="education" class="reveal">
+        <div class="section-heading">
+          <span class="section-kicker">The learning journey</span>
+          <h2>Education</h2>
+        </div>
+        <div class="education-grid">
+          <article class="card education-card featured">
+            <span class="label">Current education</span>
+            <h3>Indian Institute of Information Technology, Raichur</h3>
+            <p>B.Tech · Computer Science and Engineering</p>
+            <span class="year">2026 – Present · First Year</span>
+          </article>
+          <article class="card education-card">
+            <span class="label">Intermediate education</span>
+            <h3>Narayana Junior College</h3>
+            <p>Completed intermediate education.</p>
+          </article>
+          <article class="card education-card">
+            <span class="label">School education</span>
+            <h3>Nalanda Vidya Niketan</h3>
+            <p>Completed schooling.</p>
+          </article>
+          <article class="card education-card">
+            <span class="label">Admission</span>
+            <h3>JEE Main</h3>
+            <p>Joined IIIT Raichur through JEE Main admission.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="reveal">
+        <div class="section-heading">
+          <span class="section-kicker">Tools in my toolbox</span>
+          <h2>Technical skills</h2>
+          <p class="section-intro">I'm at the beginning of my development journey, strengthening the fundamentals and learning by practising.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="card skill-card">
+            <div class="skill-icon"> C </div>
+            <h3>C Programming</h3>
+            <p>Writing beginner-level programs and understanding core concepts.</p>
+            <span class="level">Beginner</span>
+          </article>
+          <article class="card skill-card">
+            <div class="skill-icon">⌘</div>
+            <h3>HTML & CSS</h3>
+            <p>Learning to structure and style responsive web pages.</p>
+            <span class="level">Learning</span>
+          </article>
+          <article class="card skill-card">
+            <div class="skill-icon">JS</div>
+            <h3>JavaScript</h3>
+            <p>Exploring the basics of interactive web development.</p>
+            <span class="level">Learning</span>
+          </article>
+          <article class="card skill-card">
+            <div class="skill-icon">⌁</div>
+            <h3>VS Code</h3>
+            <p>Using a code editor for programming and web projects.</p>
+            <span class="level">Tool</span>
+          </article>
+        </div>
+        <div class="tag-list" style="margin-top:16px">
+          <span class="tag">Programming fundamentals</span>
+          <span class="tag">Problem-solving</span>
+          <span class="tag">Computer science basics</span>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal">
+        <div class="section-heading">
+          <span class="section-kicker">Ideas becoming real</span>
+          <h2>Projects</h2>
+        </div>
+        <article class="card project-card">
+          <div>
+            <span class="project-tag">Personal project · In progress</span>
+            <h3>Personal Portfolio Website</h3>
+            <p>Designing and developing this website to showcase my educational background, technical skills, projects, interests, and growth as a developer.</p>
+          </div>
+          <div class="project-symbol" aria-hidden="true">✧</div>
+        </article>
+        <h3 class="future-title">Areas I'd like to explore next</h3>
+        <div class="tag-list">
+          <span class="tag">C programming projects</span>
+          <span class="tag">Web development</span>
+          <span class="tag">AI & Data Science</span>
+          <span class="tag">Problem-solving applications</span>
+          <span class="tag">Collaborative college projects</span>
+        </div>
+      </section>
+
+      <section id="interests" class="reveal">
+        <div class="section-heading">
+          <span class="section-kicker">Beyond the classroom</span>
+          <h2>Interests & achievements</h2>
+        </div>
+        <div class="two-column">
+          <article class="card list-card">
+            <h3>Things I enjoy</h3>
+            <ul class="simple-list">
+              <li><span class="list-dot"></span><span>Playing volleyball and football</span></li>
+              <li><span class="list-dot"></span><span>Exploring technology and new ideas</span></li>
+              <li><span class="list-dot"></span><span>Meeting people and social interactions</span></li>
+              <li><span class="list-dot"></span><span>Listening to music</span></li>
+              <li><span class="list-dot"></span><span>Learning, experimenting, and creating</span></li>
+            </ul>
+          </article>
+          <article class="card list-card">
+            <h3>Milestones so far</h3>
+            <ul class="simple-list">
+              <li><span class="list-dot"></span><span>Secured admission to IIIT Raichur through JEE Main.</span></li>
+              <li><span class="list-dot"></span><span>Started B.Tech in Computer Science and Engineering.</span></li>
+              <li><span class="list-dot"></span><span>Created a college volleyball Instagram page.</span></li>
+              <li><span class="list-dot"></span><span>Started developing a personal portfolio website.</span></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal">
+        <div class="card contact-panel">
+          <span class="section-kicker">Let's connect</span>
+          <h2>Have an idea? Let's talk.</h2>
+          <p>I'm interested in learning, collaborating, and connecting with people who enjoy building things with technology.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:d.c.chanukya@gmail.com">✉ Email me</a>
+            <a class="contact-link" href="https://www.instagram.com/mr._.incomplete/" target="_blank" rel="noopener noreferrer">◎ Instagram</a>
+            <span class="contact-link" title="Search for this name on LinkedIn">in&nbsp; LinkedIn: Chanukya Dupati</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span class="mini-rainbow"></span>
+    <div>Designed with curiosity by Chanukya · © 2026</div>
+  </footer>
+
+</body>
+</html>
